@@ -1,0 +1,22 @@
+﻿namespace Supermarket.Models
+{
+    using System.ComponentModel.DataAnnotations;
+
+    public class Expense
+    {
+        public int Id { get; set; }
+
+        public int VendorId { get; set; }
+
+        public virtual Vendor Vendor { get; set; }
+
+        [Required]
+        public int Month { get; set; }
+
+        [Required]
+        public int Year { get; set; }
+
+        [Required]
+        public decimal ExpenseSum { get; set; }
+    }
+}
