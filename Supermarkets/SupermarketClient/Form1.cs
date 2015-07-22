@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Supermarket.Models;
+using Supermarket.Database.Mysql.Data;
 
 namespace SupermarketClient
 {
@@ -49,12 +51,13 @@ namespace SupermarketClient
 
         private void btnMySQL_Click(object sender, EventArgs e)
         {
-
+            var context = new SupermarketsMysqlContext();
+            var products = context.Products.ToList();
         }
 
         private void btnExportToExel_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
