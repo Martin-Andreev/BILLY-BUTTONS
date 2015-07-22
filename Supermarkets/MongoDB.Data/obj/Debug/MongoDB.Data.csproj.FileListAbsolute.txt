@@ -1,0 +1,10 @@
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\MongoDB.Data\bin\Debug\MongoDB.Data.dll.config
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\MongoDB.Data\bin\Debug\MongoDB.Data.dll
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\MongoDB.Data\bin\Debug\MongoDB.Data.pdb
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\MongoDB.Data\bin\Debug\EntityFramework.dll
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\MongoDB.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\MongoDB.Data\bin\Debug\EntityFramework.xml
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\MongoDB.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\MongoDB.Data\obj\Debug\MongoDB.Data.dll
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\MongoDB.Data\obj\Debug\MongoDB.Data.pdb
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\MongoDB.Data\obj\Debug\MongoDB.Data.csprojResolveAssemblyReference.cache

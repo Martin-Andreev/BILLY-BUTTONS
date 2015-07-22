@@ -1,0 +1,9 @@
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\bin\Debug\SQLLite.Data.dll.config
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\bin\Debug\SQLLite.Data.dll
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\bin\Debug\SQLLite.Data.pdb
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\bin\Debug\EntityFramework.dll
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\bin\Debug\EntityFramework.xml
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\obj\Debug\SQLLite.Data.dll
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\obj\Debug\SQLLite.Data.pdb
