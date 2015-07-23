@@ -13,13 +13,13 @@
             Database.SetInitializer(new DropCreateDatabaseAlways<OracleDbContex>());
             OracleDbContex contex = new OracleDbContex();
 
-            var supermarket = new Supermarket
-            {
-                Name = "Billa",
-            };
+            //var supermarket = new Supermarket
+            //{
+            //    Name = "Billa",
+            //};
 
-            contex.Supermarkets.Add(supermarket);
-            contex.SaveChanges();
+            //contex.Supermarkets.Add(supermarket);
+            //contex.SaveChanges();
 
             Console.WriteLine(contex.Supermarkets.Count());
         }
