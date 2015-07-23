@@ -12,3 +12,17 @@ C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\S
 C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Oracle.Data\obj\Debug\Oracle.Data.csprojResolveAssemblyReference.cache
 C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Oracle.Data\obj\Debug\Oracle.Data.dll
 C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Oracle.Data\obj\Debug\Oracle.Data.pdb
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Oracle.Data\bin\Debug\Oracle.Data.dll.config
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Oracle.Data\bin\Debug\Oracle.Data.dll
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Oracle.Data\bin\Debug\Oracle.Data.pdb
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Oracle.Data\bin\Debug\EntityFramework.dll
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Oracle.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Oracle.Data\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Oracle.Data\bin\Debug\Oracle.ManagedDataAccess.EntityFramework.dll
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Oracle.Data\bin\Debug\Supermarket.Models.dll
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Oracle.Data\bin\Debug\Supermarket.Models.pdb
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Oracle.Data\bin\Debug\EntityFramework.xml
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Oracle.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Oracle.Data\obj\Debug\Oracle.Data.csprojResolveAssemblyReference.cache
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Oracle.Data\obj\Debug\Oracle.Data.dll
+C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Oracle.Data\obj\Debug\Oracle.Data.pdb

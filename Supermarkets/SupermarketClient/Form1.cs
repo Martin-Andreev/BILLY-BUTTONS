@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Supermarket.Models;
+using MySQLDB.Data;
+using MSSQL.Data;
 
 namespace SupermarketClient
 {
@@ -39,7 +42,11 @@ namespace SupermarketClient
 
         private void btnMongoDB_Click(object sender, EventArgs e)
         {
-
+            
+            //TODO: Remove from here to the proper button when button is created;
+            //Remove logic to a method
+            var context = new MSSQLContext();
+            var products = context.Products.ToList();
         }
 
         private void btnLoadXML_Click(object sender, EventArgs e)
@@ -49,10 +56,18 @@ namespace SupermarketClient
 
         private void btnMySQL_Click(object sender, EventArgs e)
         {
-
+            
+            //TODO: Remove logic to a method
+            var context = new MySQLContext();
+            var products = context.Products.ToList();
         }
 
         private void btnExportToExel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }
