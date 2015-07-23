@@ -22,7 +22,7 @@
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.HasDefaultSchema("ANDREEV");
+            modelBuilder.HasDefaultSchema("TEAMWORK");
             base.OnModelCreating(modelBuilder);
         }
     }

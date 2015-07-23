@@ -20,14 +20,15 @@
         [Required]
         public decimal Price { get; set; }
 
-        [Required]
-        public MeasureType Measure { get; set; }
-
         public int VendorId { get; set; }
 
         public virtual Vendor Vendor { get; set; }
 
-        public ICollection<Sale> Sales
+        public int MeasureId { get; set; }
+
+        public virtual Measure Measure { get; set; }
+
+        public virtual ICollection<Sale> Sales
         {
             get { return this.sales; }
             set { this.sales = value; }

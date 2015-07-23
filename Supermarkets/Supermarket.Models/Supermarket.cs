@@ -17,7 +17,7 @@
         [Required]
         public string Name { get; set; }
 
-        public ICollection<Sale> Sales
+        public virtual ICollection<Sale> Sales
         {
             get { return this.sales; } 
             set { this.sales = value; }

@@ -1,5 +1,6 @@
 ﻿namespace Supermarket.Models
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
 
     public class Expense
@@ -11,10 +12,7 @@
         public virtual Vendor Vendor { get; set; }
 
         [Required]
-        public int Month { get; set; }
-
-        [Required]
-        public int Year { get; set; }
+        public virtual DateTime ExpenseDate { get; set; }
 
         [Required]
         public decimal ExpenseSum { get; set; }
