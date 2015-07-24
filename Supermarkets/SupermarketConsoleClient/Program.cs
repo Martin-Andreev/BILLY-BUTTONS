@@ -4,24 +4,16 @@
     using System.Data.Entity;
     using System.Linq;
     using Oracle.Data;
-    using Supermarket.Models;
+    using Oracle.Data.Migrations;
 
     public class SupermarketMain
     {
         public static void Main()
         {
-            Database.SetInitializer(new DropCreateDatabaseAlways<OracleDbContex>());
-            OracleDbContex contex = new OracleDbContex();
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<OracleDbContex, Configuration>());
+            OracleDbContex context = new OracleDbContex();
 
-            //var supermarket = new Supermarket
-            //{
-            //    Name = "Billa",
-            //};
-
-            //contex.Supermarkets.Add(supermarket);
-            //contex.SaveChanges();
-
-            Console.WriteLine(contex.Supermarkets.Count());
+            Console.WriteLine(context.Supermarkets.Count());
         }
     }
 }

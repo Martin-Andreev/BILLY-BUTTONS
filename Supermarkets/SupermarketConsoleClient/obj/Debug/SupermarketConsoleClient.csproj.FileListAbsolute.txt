@@ -33,3 +33,6 @@ C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermar
 C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SupermarketConsoleClient\bin\Debug\EntityFramework.xml
 C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SupermarketConsoleClient\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SupermarketConsoleClient\obj\Debug\SupermarketConsoleClient.csprojResolveAssemblyReference.cache
+C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SupermarketConsoleClient\bin\Debug\MySql.Data.dll
+C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SupermarketConsoleClient\bin\Debug\mysql.data.entity.EF6.dll
+C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SupermarketConsoleClient\bin\Debug\MySql.Web.dll
