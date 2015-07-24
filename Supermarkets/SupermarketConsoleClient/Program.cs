@@ -3,17 +3,18 @@
     using System;
     using System.Data.Entity;
     using System.Linq;
+    using MSSQL.Data;
     using Oracle.Data;
-    using Oracle.Data.Migrations;
+    using MSSQL.Data.Migrations;
 
     public class SupermarketMain
     {
         public static void Main()
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<OracleDbContex, Configuration>());
-            OracleDbContex context = new OracleDbContex();
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MSSQLContext, Configuration>());
+            MSSQLContext context = new MSSQLContext();
 
-            Console.WriteLine(context.Supermarkets.Count());
+            Console.WriteLine(context.Vendors.Count());
         }
     }
 }

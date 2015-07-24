@@ -45,8 +45,8 @@ namespace SupermarketClient
             
             //TODO: Remove from here to the proper button when button is created;
             //Remove logic to a method
-            var context = new MSSQLContext();
-            var products = context.Products.ToList();            
+            //var context = new MSSQLContext();
+            //var products = context.Products.ToList();            
         }
 
         private void btnLoadXML_Click(object sender, EventArgs e)
@@ -58,8 +58,8 @@ namespace SupermarketClient
         {
             
             //TODO: Remove logic to a method
-            var context = new MySQLContext();
-            var products = context.Products.ToList();            
+            //var context = new MySQLContext();
+            //var products = context.Products.ToList();            
         }
 
         private void btnExportToExel_Click(object sender, EventArgs e)

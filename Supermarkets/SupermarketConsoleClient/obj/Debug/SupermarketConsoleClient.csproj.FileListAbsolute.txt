@@ -36,3 +36,5 @@ C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermar
 C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SupermarketConsoleClient\bin\Debug\MySql.Data.dll
 C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SupermarketConsoleClient\bin\Debug\mysql.data.entity.EF6.dll
 C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SupermarketConsoleClient\bin\Debug\MySql.Web.dll
+C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SupermarketConsoleClient\bin\Debug\MSSQL.Data.dll
+C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SupermarketConsoleClient\bin\Debug\MSSQL.Data.pdb

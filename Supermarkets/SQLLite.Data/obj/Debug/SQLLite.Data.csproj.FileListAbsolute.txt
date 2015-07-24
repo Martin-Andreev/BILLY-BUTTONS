@@ -8,3 +8,13 @@ C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermar
 C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\obj\Debug\SQLLite.Data.csprojResolveAssemblyReference.cache
 C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\obj\Debug\SQLLite.Data.dll
 C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\obj\Debug\SQLLite.Data.pdb
+C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\bin\Debug\SQLLite.Data.dll.config
+C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\bin\Debug\SQLLite.Data.dll
+C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\bin\Debug\SQLLite.Data.pdb
+C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\bin\Debug\EntityFramework.dll
+C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\bin\Debug\EntityFramework.xml
+C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\obj\Debug\SQLLite.Data.csprojResolveAssemblyReference.cache
+C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\obj\Debug\SQLLite.Data.dll
+C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SQLLite.Data\obj\Debug\SQLLite.Data.pdb

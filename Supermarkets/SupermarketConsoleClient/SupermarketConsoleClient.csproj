@@ -78,6 +78,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MSSQL.Data\MSSQL.Data.csproj">
+      <Project>{8c6d8f40-0eca-483b-80d3-9243cbc8dc95}</Project>
+      <Name>MSSQL.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Oracle.Data\Oracle.Data.csproj">
       <Project>{93f65ec7-7713-45ad-8b6b-caed352ec8d4}</Project>
       <Name>Oracle.Data</Name>
