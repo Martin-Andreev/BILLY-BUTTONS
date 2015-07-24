@@ -21,3 +21,6 @@ C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermar
 C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SupermarketClient\obj\Debug\SupermarketClient.pdb
 C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SupermarketClient\bin\Debug\MSSQL.Data.dll
 C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SupermarketClient\bin\Debug\MSSQL.Data.pdb
+C:\Users\Peter\Documents\GitHub\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SupermarketClient\bin\Debug\SupermarketClient.exe.config
+C:\Users\Peter\Documents\GitHub\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SupermarketClient\obj\Debug\SupermarketClient.exe
+C:\Users\Peter\Documents\GitHub\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SupermarketClient\obj\Debug\SupermarketClient.pdb

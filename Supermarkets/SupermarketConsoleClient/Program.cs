@@ -21,7 +21,7 @@
             //contex.Supermarkets.Add(supermarket);
             //contex.SaveChanges();
 
-            Console.WriteLine(contex.Supermarkets.Count());
+            Console.WriteLine(true);
         }
     }
 }
