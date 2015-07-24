@@ -10,7 +10,7 @@
         {
         }
 
-         public IDbSet<Expense> Expenses { get; set; }
+        public IDbSet<Expense> Expenses { get; set; }
         
         public IDbSet<Product> Products { get; set; }
         
@@ -19,6 +19,8 @@
         public IDbSet<Supermarket> Supermarkets { get; set; }
 
         public IDbSet<Vendor> Vendors { get; set; }
+
+        public IDbSet<Measure> Measures { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

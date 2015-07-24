@@ -21,3 +21,6 @@ C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermar
 C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Supermarket.Models\obj\Debug\Supermarket.Models.csprojResolveAssemblyReference.cache
 C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Supermarket.Models\obj\Debug\Supermarket.Models.dll
 C:\Users\Asus\Desktop\SuperMarkets\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Supermarket.Models\obj\Debug\Supermarket.Models.pdb
+C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Supermarket.Models\bin\Debug\MySql.Data.dll
+C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Supermarket.Models\bin\Debug\mysql.data.entity.EF6.dll
+C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\Supermarket.Models\bin\Debug\MySql.Web.dll
