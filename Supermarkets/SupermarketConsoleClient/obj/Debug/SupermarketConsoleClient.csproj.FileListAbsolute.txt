@@ -38,3 +38,4 @@ C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\S
 C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SupermarketConsoleClient\bin\Debug\MySql.Web.dll
 C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SupermarketConsoleClient\bin\Debug\MSSQL.Data.dll
 C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SupermarketConsoleClient\bin\Debug\MSSQL.Data.pdb
+C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\SupermarketConsoleClient\bin\Debug\MySql.Fabric.Plugin.dll
