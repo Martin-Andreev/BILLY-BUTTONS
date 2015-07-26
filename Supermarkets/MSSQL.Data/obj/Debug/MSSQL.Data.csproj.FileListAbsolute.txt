@@ -34,3 +34,5 @@ C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\S
 C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\MSSQL.Data\obj\Debug\MSSQL.Data.csprojResolveAssemblyReference.cache
 C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\MSSQL.Data\obj\Debug\MSSQL.Data.dll
 C:\Users\Martin\Documents\GitHub\Projects\Team-Billy_Buttons-SupermarketsChain\Supermarkets\MSSQL.Data\obj\Debug\MSSQL.Data.pdb
+C:\Users\Peter\Documents\GitHub\Team-Billy_Buttons-SupermarketsChain\Supermarkets\MSSQL.Data\bin\Debug\itextsharp.dll
+C:\Users\Peter\Documents\GitHub\Team-Billy_Buttons-SupermarketsChain\Supermarkets\MSSQL.Data\bin\Debug\itextsharp.xml

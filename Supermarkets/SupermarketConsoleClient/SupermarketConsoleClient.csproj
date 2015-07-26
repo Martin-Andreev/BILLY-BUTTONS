@@ -86,6 +86,10 @@
       <Project>{8c6d8f40-0eca-483b-80d3-9243cbc8dc95}</Project>
       <Name>MSSQL.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MySQLDB.Data\MySQLDB.Data.csproj">
+      <Project>{945d957e-9693-4c98-acf0-bdbfc7c759e8}</Project>
+      <Name>MySQLDB.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Oracle.Data\Oracle.Data.csproj">
       <Project>{93f65ec7-7713-45ad-8b6b-caed352ec8d4}</Project>
       <Name>Oracle.Data</Name>
