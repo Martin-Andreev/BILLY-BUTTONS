@@ -1,7 +1,7 @@
 ﻿
 namespace SupermarketConsoleClient
 {
-
+    using System.Linq;
     using MongoDB.Bson;
     using MongoDB.Driver;
     using System;
@@ -12,51 +12,56 @@ namespace SupermarketConsoleClient
     {
         public static void Main()
         {
-            string subDirectory = "../../Json-Reports";
 
             var client = new MongoClient();
             var database = client.GetDatabase("Reports");
             database.DropCollectionAsync("SalesByProductReports");
-            var dbReports = database.GetCollection<Reports>("SalesByProductReports");
+            var collection = database.GetCollection<BsonDocument>("SalesByProductReports");
 
-            DirectoryInfo di = new DirectoryInfo(subDirectory);
-            try
-            {
-                di.Delete(true);
-            }
-            catch (IOException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            di = Directory.CreateDirectory(subDirectory);
+            string path = @"..\..\Json-Reports\";
+            ClearDirectory(path);
 
             var context = new MSSQLContext();
 
-            string querySelect =
-                (@"SELECT 
-                    s.ProductId as product_id,
-                    p.Name as product_name,
-                    v.Name as vendor_name,
-                    SUM(s.Quantity) as total_quantity_sold, 
-                    SUM(s.Quantity * s.SalePrice) as total_incomes
-                FROM Sales s
-                INNER JOIN Products p ON p.Id = s.ProductId
-                INNER JOIN Vendors v ON v.Id = p.VendorId
-                GROUP BY ProductId, p.Name, v.Name");
-
-            //WHERE startDate and endDate /|\
-
-            var reports = context.Database.SqlQuery<Reports>(querySelect);
+            var reports = context.Sales
+                .Where(s => s.SaleDate <= DateTime.Now) //Please add correct startDate and endDate
+                .GroupBy(s => new
+                {
+                    product_id = s.ProductId,
+                    product_name = s.Product.Name,
+                    vendor_name = s.Product.Vendor.Name
+                })
+                .Select(s => new
+                {
+                    product_id = s.Key.product_id,
+                    product_name = s.Key.product_name,
+                    vendor_name = s.Key.vendor_name,
+                    total_quantity_sold = s.Sum(tqs => tqs.Quantity),
+                    total_incomes = s.Sum(ti => ti.Quantity * ti.SalePrice)
+                });
 
             foreach (var report in reports)
             {
-                string result = report.ToJson().Replace('_', '-');
-                File.WriteAllText("../../Json-Reports/" + report.product_id + ".json", result);
+                var currentReport = new BsonDocument
+                {
+                    { "product-id", report.product_id},
+                    {"product-name", report.product_name},
+                    {"vendor-name", report.vendor_name},
+                    {"total-quantity-sold", report.total_quantity_sold},
+                    {"total-incomes", report.total_incomes.ToString()}
+                };
 
-                dbReports.InsertOneAsync(report).Wait();
-
-                Console.WriteLine(result);
+                File.WriteAllText(path + report.product_id + ".json", currentReport.ToJson());
+                collection.InsertOneAsync(currentReport).Wait();
             }
+        }
+        private static void ClearDirectory(string path)
+        {
+            if (Directory.Exists(path))//if folder exists
+            {
+                Directory.Delete(path, true);//recursive delete (all subdirs, files)
+            }
+            Directory.CreateDirectory(path);//creates empty directory
         }
     }
 }
