@@ -53,7 +53,8 @@ namespace SupermarketClient
 
         private void btnLoadXML_Click(object sender, EventArgs e)
         {
-
+            ImportFromXMLForm xmlForm = new ImportFromXMLForm();
+            xmlForm.ShowDialog();
         }
 
         private void btnMySQL_Click(object sender, EventArgs e)
