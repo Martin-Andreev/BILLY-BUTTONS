@@ -2,6 +2,7 @@ namespace MSSQL.Data.Migrations
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
     using Supermarket.Models;
@@ -87,7 +88,21 @@ namespace MSSQL.Data.Migrations
             if (!context.Expenses.Any())
             {
 
-                List<decimal> sums = new List<decimal>() { 1.2m, 4.5m, 2.65m, 1.3m, 120.0m, 71.60m, 10.55m, 13.20m, 4.50m, 700m };
+                List<decimal> sums = new List<decimal>()
+                {
+                    1.2m,
+                    4.5m,
+                    2.65m,
+                    1.3m,
+                    120.0m,
+                    71.60m,
+                    10.55m,
+                    13.20m,
+                    4.50m,
+                    700m,
+                    5.5m,
+                    10m
+                };
                 List<DateTime> dates = new List<DateTime>()
                 {
                     new DateTime(2015, 7, 20, 18, 20, 05),
@@ -99,7 +114,9 @@ namespace MSSQL.Data.Migrations
                     new DateTime(2015, 7, 21, 11, 50, 41),
                     new DateTime(2015, 6, 19, 09, 40, 46),
                     new DateTime(2015, 7, 21, 12, 30, 35),
-                    new DateTime(2015, 6, 20, 14, 20, 06)
+                    new DateTime(2015, 6, 20, 14, 20, 06),
+                    new DateTime(2015, 7, 21, 15, 40, 45),
+                    new DateTime(2015, 7, 20, 16, 44, 31)
                 };
 
                 for (int i = 0; i < 10; i++)
@@ -107,6 +124,18 @@ namespace MSSQL.Data.Migrations
                     var expense = new Expense()
                     {
                         VendorId = i + 1,
+                        ExpenseSum = sums[i],
+                        ExpenseDate = dates[i]
+                    };
+
+                    context.Expenses.Add(expense);
+                }
+
+                for (int i = 10; i < 12; i++)
+                {
+                    var expense = new Expense()
+                    {
+                        VendorId = 1,
                         ExpenseSum = sums[i],
                         ExpenseDate = dates[i]
                     };

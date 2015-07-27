@@ -63,6 +63,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exporters\ExportToXML.cs" />
+    <Compile Include="ExportToXMLForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportToXMLForm.Designer.cs">
+      <DependentUpon>ExportToXMLForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +84,9 @@
     </Compile>
     <Compile Include="SupermarketMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ExportToXMLForm.resx">
+      <DependentUpon>ExportToXMLForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +129,9 @@
       <Project>{9af51ea9-db57-47c9-a084-6fef7bc48a8a}</Project>
       <Name>Supermarket.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Importerts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

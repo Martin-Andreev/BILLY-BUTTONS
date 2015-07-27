@@ -58,7 +58,11 @@
     <Compile Include="ExportSalesReportsToPDF.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MSSQLContext.cs" />
+    <Compile Include="MSSQLRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\SaleReport.cs" />
+    <Compile Include="Utilities\VendorReport.cs" />
+    <Compile Include="Utilities\VendorSalesReport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

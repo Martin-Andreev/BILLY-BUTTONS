@@ -38,7 +38,8 @@ namespace SupermarketClient
 
         private void btnGenerateXML_Click(object sender, EventArgs e)
         {
-
+            ExportToXMLForm xmlForm = new ExportToXMLForm();
+            xmlForm.ShowDialog();
         }
 
         private void btnMongoDB_Click(object sender, EventArgs e)
