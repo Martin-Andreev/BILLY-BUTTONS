@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <sales>
 	<sale vendor="Nestle Sofia Corp.">
-		<summary date="20-Jul-2015" total-sum="5.60" />
-		<summary date="22-Jul-2015" total-sum="50.20" />
+		<summary date="01-Aug-2013" total-sum="40.00" />
 	</sale>
-	<sale vendor="Samsung">
-		<summary date="22-Jul-2015" total-sum="71.60" />
+	<sale vendor="Zagorka Corp.">
+		<summary date="01-Aug-2013" total-sum="180.00" />
 	</sale>
-	<sale vendor="Lenovo">
-		<summary date="21-Jul-2015" total-sum="10.55" />
-	</sale>
-	<sale vendor="Han Krum">
-		<summary date="21-Jul-2015" total-sum="4.50" />
+	<sale vendor="Targovishte Bottling Company Ltd.">
+		<summary date="01-Aug-2013" total-sum="180.00" />
 	</sale>
 </sales>

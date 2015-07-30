@@ -16,17 +16,6 @@ namespace MSSQL.Data.Migrations
 
         protected override void Seed(MSSQLContext context)
         {
-            InsertSupermarkets(context);
-
-            InsertMeasures(context);
-
-            InsertVendors(context);
-
-            InsertProducts(context);
-
-            InsertExpenses(context);
-
-            InsertSales(context);
         }
 
         private void InsertSales(MSSQLContext context)

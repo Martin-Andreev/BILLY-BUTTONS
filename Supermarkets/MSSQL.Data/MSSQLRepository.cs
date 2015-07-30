@@ -4,11 +4,13 @@
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
+    using Oracle.Models;
+    using Supermarket.Models;
     using Utilities;
 
     public static class MSSQLRepository
     {
-        public static List<VendorSalesReport> GetSalesByVendors(DateTime startDate, DateTime endDate)
+        public static List<VendorSalesReport> GetSalesByVendor(DateTime startDate, DateTime endDate)
         {
             var context = new MSSQLContext();
 
@@ -37,6 +39,90 @@
                 }));
 
             return vendorsSalesReport;
+        }
+
+        public static IList<SalesReport> GetSalesByProduct(DateTime startDate, DateTime endDate)
+        {
+            var context = new MSSQLContext();
+
+            var reports = context.Sales
+                .Where(s => s.SaleDate >= startDate && s.SaleDate <= endDate)
+                .GroupBy(s => new
+                {
+                    productId = s.ProductId,
+                    productName = s.Product.Name,
+                    vendorName = s.Product.Vendor.Name
+                })
+                .Select(s => new SalesReport
+                {
+                    ProductId = s.Key.productId,
+                    ProductName = s.Key.productName,
+                    VendorName = s.Key.vendorName,
+                    TotalQuantitySold = s.Sum(tqs => tqs.Quantity),
+                    TotalIncomes = s.Sum(ti => ti.Quantity * ti.SalePrice)
+                });
+
+            var vendorsSalesReport = new List<SalesReport>();
+            vendorsSalesReport.AddRange(reports);
+
+            return vendorsSalesReport;
+        }
+
+        public static void ReplicateOracleData(IList<ProductDTO> data)
+        {
+            var context = new MSSQLContext();
+
+            foreach (var product in data)
+            {
+                if (!context.Products.Any(p => p.Name == product.Name))
+                {
+                    Vendor vendor = GetProductVendor(context, product);
+
+                    Measure measure = GetProductMeasure(context, product);
+
+                    context.Products.Add(new Product()
+                    {
+                        Name = product.Name,
+                        Measure = measure,
+                        Vendor = vendor,
+                        Price = product.Price
+                    });
+
+                    context.SaveChanges();
+                }
+            }
+        }
+
+        private static Measure GetProductMeasure(MSSQLContext context, ProductDTO product)
+        {
+            if (!context.Measures.Any(v => v.Name == product.Measure.Name))
+            {
+                var measure = new Measure()
+                {
+                    Name = product.Measure.Name
+                };
+
+                context.Measures.Add(measure);
+                return measure;
+            }
+
+            return context.Measures.First(v => v.Name == product.Measure.Name);
+        }
+
+        private static Vendor GetProductVendor(MSSQLContext context, ProductDTO product)
+        {
+            if (!context.Vendors.Any(v => v.Name == product.Vendor.Name))
+            {
+                var vendor = new Vendor()
+                {
+                    Name = product.Vendor.Name
+                };
+
+                context.Vendors.Add(vendor);
+                return vendor;
+            }
+
+            return context.Vendors.First(v => v.Name == product.Vendor.Name);
         }
     }
 }

@@ -1,67 +1,89 @@
-﻿
-namespace SupermarketConsoleClient
+﻿namespace SupermarketConsoleClient
 {
-    using System.Linq;
-    using MongoDB.Bson;
-    using MongoDB.Driver;
     using System;
-    using System.IO;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Linq;
     using MSSQL.Data;
+    using Oracle.Data;
+    //using Oracle.Data.Migrations;
+    using System.IO.Compression;
+    using System.IO;
+    using Excel;
+    using Supermarket.Models;
 
     public class SupermarketMain
     {
         public static void Main()
         {
+            //MSSQLRepository.ReplicateOracleData(OracleRepository.GetOracleData());
+            OracleDbContex context2 = new OracleDbContex();
 
-            var client = new MongoClient();
-            var database = client.GetDatabase("Reports");
-            database.DropCollectionAsync("SalesByProductReports");
-            var collection = database.GetCollection<BsonDocument>("SalesByProductReports");
+            Console.WriteLine(context2.Products.Count());
+            return;
+            MSSQLContext context = new MSSQLContext();
 
-            string path = @"..\..\Json-Reports\";
-            ClearDirectory(path);
-
-            var context = new MSSQLContext();
-
-            var reports = context.Sales
-                .Where(s => s.SaleDate <= DateTime.Now) //Please add correct startDate and endDate
-                .GroupBy(s => new
-                {
-                    product_id = s.ProductId,
-                    product_name = s.Product.Name,
-                    vendor_name = s.Product.Vendor.Name
-                })
-                .Select(s => new
-                {
-                    product_id = s.Key.product_id,
-                    product_name = s.Key.product_name,
-                    vendor_name = s.Key.vendor_name,
-                    total_quantity_sold = s.Sum(tqs => tqs.Quantity),
-                    total_incomes = s.Sum(ti => ti.Quantity * ti.SalePrice)
-                });
-
-            foreach (var report in reports)
+            using (ZipArchive zip = ZipFile.OpenRead(@"../../Sample-Sales-Reports.zip"))
             {
-                var currentReport = new BsonDocument
+                foreach (var entry in zip.Entries)
                 {
-                    { "product-id", report.product_id},
-                    {"product-name", report.product_name},
-                    {"vendor-name", report.vendor_name},
-                    {"total-quantity-sold", report.total_quantity_sold},
-                    {"total-incomes", report.total_incomes.ToString()}
-                };
+                    if (entry.Name != "")
+                    {
+                        string[] fileData = entry.FullName.Split('/');
+                        DateTime saleDate = DateTime.Parse(fileData[0]);
 
-                File.WriteAllText(path + report.product_id + ".json", currentReport.ToJson());
-                collection.InsertOneAsync(currentReport).Wait();
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            var buffer = new byte[16 * 1024 - 1];
+                            int read;
+                            var kur = entry.Open();
+                            while ((read = kur.Read(buffer, 0, buffer.Length)) > 0)
+                            {
+                                ms.Write(buffer, 0, read);
+                            }
+
+                            IExcelDataReader excelReader = ExcelReaderFactory.CreateBinaryReader(ms);
+                            DataSet result = excelReader.AsDataSet();
+
+                            var rows = result.Tables[0].Rows;
+                            int rowsCount = rows.Count;
+                           
+                            string supermarketName = rows[1][1].ToString();
+                            Supermarket supermarket = context.Supermarkets.FirstOrDefault(s => s.Name == supermarketName);
+
+                            if (supermarket == null)
+                            {
+                                supermarket = new Supermarket()
+                                {
+                                    Name = supermarketName
+                                };
+
+                                context.Supermarkets.Add(supermarket);
+                            }
+
+                            for (int i = 3; i < rowsCount - 1; i++)
+                            {
+                                string productName = rows[i][1].ToString();
+                                int quantity = int.Parse(rows[i][2].ToString());
+                                decimal price = decimal.Parse(rows[i][3].ToString());
+
+                                Product product = context.Products.FirstOrDefault(p => p.Name == productName);
+
+                                context.Sales.Add(new Sale()
+                                {
+                                    Supermarket = supermarket,
+                                    Product = product,
+                                    SaleDate = saleDate,
+                                    SalePrice = price,
+                                    Quantity = quantity
+                                });
+
+                                context.SaveChanges();
+                            }
+                        }
+                    }
+                }
             }
-        }
-        private static void ClearDirectory(string path)
-        {
-            if (Directory.Exists(path))//if folder exists
-            {
-                Directory.Delete(path, true);//recursive delete (all subdirs, files)
-            }
-            Directory.CreateDirectory(path);//creates empty directory
         }
     }
 }

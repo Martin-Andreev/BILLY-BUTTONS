@@ -6,14 +6,13 @@
     using System.Transactions;
     using System.Xml.Linq;
     using MSSQL.Data;
-    using MSSQL.Data.Migrations;
+    //using MSSQL.Data.Migrations;
     using Supermarket.Models;
 
     public static class ImportFromXML
     {
         public static void ImportVendorExpenses(string file)
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MSSQLContext, Configuration>());
             MSSQLContext context = new MSSQLContext();
 
             XDocument xmlDoc = XDocument.Load(file);

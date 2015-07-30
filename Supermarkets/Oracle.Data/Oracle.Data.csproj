@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OracleDbContex.cs" />
+    <Compile Include="OracleRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +67,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Oracle.Models\Oracle.Models.csproj">
+      <Project>{be84669a-503d-4297-8e5d-6dab8e26695a}</Project>
+      <Name>Oracle.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Supermarket.Models\Supermarket.Models.csproj">
       <Project>{9af51ea9-db57-47c9-a084-6fef7bc48a8a}</Project>
       <Name>Supermarket.Models</Name>

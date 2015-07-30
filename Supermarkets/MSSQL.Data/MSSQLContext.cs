@@ -1,14 +1,15 @@
 namespace MSSQL.Data
 {
     using System.Data.Entity;
+    using Migrations;
     using Supermarket.Models;
 
     public class MSSQLContext : DbContext
     {
-       
         public MSSQLContext()
             : base("MSSQLContext")
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MSSQLContext, Configuration>());
         }
 
         public IDbSet<Expense> Expenses { get; set; }

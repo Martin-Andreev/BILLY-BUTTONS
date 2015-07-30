@@ -1,6 +1,9 @@
 ﻿namespace Oracle.Data
 {
     using System.Data.Entity;
+    using Migrations;
+    //using Migrations;
+    using Models;
     using Supermarket.Models;
 
     public class OracleDbContex : DbContext
@@ -8,19 +11,15 @@
         public OracleDbContex()
             : base("OracleDbContext")
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<OracleDbContex, Configuration>());
+            //Database.SetInitializer(new DropCreateDatabaseAlways<OracleDbContex>());
         }
 
-        public IDbSet<Expense> Expenses { get; set; }
+        public IDbSet<ProductDTO> Products { get; set; }
         
-        public IDbSet<Product> Products { get; set; }
-        
-        public IDbSet<Sale> Sales { get; set; }
-        
-        public IDbSet<Supermarket> Supermarkets { get; set; }
+        public IDbSet<VendorDTO> Vendors { get; set; }
 
-        public IDbSet<Vendor> Vendors { get; set; }
-
-        public IDbSet<Measure> Measures { get; set; }
+        public IDbSet<MeasureDTO> Measures { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
