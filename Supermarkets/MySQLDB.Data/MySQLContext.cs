@@ -1,18 +1,18 @@
 namespace MySQLDB.Data
 {
-    using MySql.Data.Entity;
-    using System;
     using System.Data.Entity;
-    using System.Linq;
+    using Migrations;
+    using MySql.Data.Entity;
     using Supermarket.Models;
 
-    [DbConfigurationType(typeof(MySqlEFConfiguration))]
+    //[DbConfigurationType(typeof(Configuration))]
     public class MySQLContext : DbContext
     {
         
         public MySQLContext()
             : base("name=MySQLContext")
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MySQLContext, Configuration>());
         }
 
         public DbSet<Expense> Expenses { get; set; }
@@ -26,5 +26,16 @@ namespace MySQLDB.Data
         public DbSet<Supermarket> Supermarkets { get; set; }
 
         public DbSet<Vendor> Vendors { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Vendor>().HasMany(v => v.Products);
+            modelBuilder.Entity<Vendor>().HasMany(v => v.Expenses);
+            modelBuilder.Entity<Product>().HasMany(p => p.Sales);
+            modelBuilder.Entity<Supermarket>().HasMany(s => s.Sales);
+            modelBuilder.Entity<Measure>().HasMany(m => m.Products);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

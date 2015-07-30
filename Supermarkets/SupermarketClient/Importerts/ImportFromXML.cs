@@ -1,12 +1,10 @@
 ﻿namespace SupermarketClient.Importerts
 {
     using System;
-    using System.Data.Entity;
     using System.Linq;
     using System.Transactions;
     using System.Xml.Linq;
     using MSSQL.Data;
-    //using MSSQL.Data.Migrations;
     using Supermarket.Models;
 
     public static class ImportFromXML

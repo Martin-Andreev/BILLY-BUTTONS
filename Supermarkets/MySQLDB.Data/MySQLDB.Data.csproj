@@ -60,7 +60,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MySQLContext.cs" />
+    <Compile Include="MySqlRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -68,6 +70,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MSSQL.Data\MSSQL.Data.csproj">
+      <Project>{8c6d8f40-0eca-483b-80d3-9243cbc8dc95}</Project>
+      <Name>MSSQL.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Supermarket.Models\Supermarket.Models.csproj">
       <Project>{9af51ea9-db57-47c9-a084-6fef7bc48a8a}</Project>
       <Name>Supermarket.Models</Name>

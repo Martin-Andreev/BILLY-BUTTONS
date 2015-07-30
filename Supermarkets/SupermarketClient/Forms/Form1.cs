@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Windows.Forms;
     using MSSQL.Data;
+    using MySQLDB.Data;
     using Oracle.Data;
 
     public partial class Form1 : Form
@@ -15,6 +16,8 @@
 
         private void btnOracle_Click(object sender, EventArgs e)
         {
+            OracleDbContex context = new OracleDbContex();
+            MessageBox.Show(context.Measures.Count().ToString());
             MSSQLRepository.ReplicateOracleData(OracleRepository.GetOracleData());
         }
 
@@ -54,10 +57,11 @@
 
         private void btnMySQL_Click(object sender, EventArgs e)
         {
-            
-            //TODO: Remove logic to a method
-            //var context = new MySQLContext();
-            //var products = context.Products.ToList();            
+            //MySQLContext context = new MySQLContext();
+            //MessageBox.Show(context.Products.Count().ToString());
+            MSSQLContext context = new MSSQLContext();
+            //var data = MSSQLRepository.GetAllData(context);
+            MySqlRepository.ReplicateMssqlData(context);
         }
 
         private void btnExportToExel_Click(object sender, EventArgs e)

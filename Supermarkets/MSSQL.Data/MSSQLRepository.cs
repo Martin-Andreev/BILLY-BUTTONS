@@ -124,5 +124,20 @@
 
             return context.Vendors.First(v => v.Name == product.Vendor.Name);
         }
+
+        public static IList<Product> GetAllData(MSSQLContext context)
+        {
+            var data = context.Products
+                .Include(p => p.Measure)
+                .Include(p => p.Sales)
+                .Include(p => p.Sales.Select(s => s.Supermarket))
+                .Include(p => p.Vendor)
+                .Include(p => p.Vendor.Expenses)
+                .ToList();
+
+            return data;
+        }
+
+    
     }
 }

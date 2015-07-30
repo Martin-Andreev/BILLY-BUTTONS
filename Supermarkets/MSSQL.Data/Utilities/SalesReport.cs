@@ -8,7 +8,7 @@
 
         public string VendorName { get; set; }
 
-        public double TotalQuantitySold { get; set; }
+        public int TotalQuantitySold { get; set; }
 
         public decimal TotalIncomes { get; set; }
     }
