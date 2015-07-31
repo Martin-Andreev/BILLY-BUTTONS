@@ -2,13 +2,10 @@ namespace MySQLDB.Data
 {
     using System.Data.Entity;
     using Migrations;
-    using MySql.Data.Entity;
     using Supermarket.Models;
 
-    //[DbConfigurationType(typeof(Configuration))]
     public class MySQLContext : DbContext
-    {
-        
+    {   
         public MySQLContext()
             : base("name=MySQLContext")
         {

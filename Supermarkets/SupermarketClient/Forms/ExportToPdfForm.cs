@@ -14,9 +14,9 @@ namespace SupermarketClient
     using MSSQL.Data;
     //using MSSQL.Data.Migrations;
 
-    public partial class Form2 : Form
+    public partial class ExportToPdfForm : Form
     {
-        public Form2()
+        public ExportToPdfForm()
         {
             InitializeComponent();
         }
@@ -27,6 +27,7 @@ namespace SupermarketClient
             var secondDate = this.dateTimePicker2.Value.Date;
             MSSQLContext context = new MSSQLContext();
             ExportSalesReportsToPDF.ExportDataToPdf(firstDate,secondDate, context);
+            this.Close();
         }
     }
 }

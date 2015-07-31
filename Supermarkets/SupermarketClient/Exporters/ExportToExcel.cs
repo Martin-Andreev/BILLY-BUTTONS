@@ -2,24 +2,21 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.IO;
     using System.Linq;
     using System.Reflection;
+    using Microsoft.Office.Interop.Excel;
     using Supermarket.Models;
     using Utilities;
-    using Excel = Microsoft.Office.Interop.Excel;
     using SQL = System.Data;
 
     public class ExportToExcel
     {
         public static void ExportVendorsReports(Dictionary<string, int> products, IList<Vendor> vendors)
         {
-            string path = Environment.CurrentDirectory + @"..\..\..\Product-Financial-Report.xlsx";
-            //string path = @"..\..\Product-Financial-Report.xlsx";
-            //string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"..\..\Product-Financial-Report.xlsx";
-
-            var file = new Excel.Application();
+            string path = Environment.CurrentDirectory + @"..\..\..\Exported-Files\Product-Financial-Report.xlsx";
+          
+            var file = new Application();
 
             if (File.Exists(path))
             {
@@ -33,19 +30,19 @@
 
             foreach (SQL.DataTable table in set.Tables)
             {
-                Excel.Worksheet worksheet = excelWorkBook.Sheets.Add();
+                Worksheet worksheet = excelWorkBook.Sheets.Add();
                 worksheet.Name = table.TableName;
 
-                for (int i = 1; i < table.Columns.Count + 1; i++)
+                for (int tableColumn = 1; tableColumn < table.Columns.Count + 1; tableColumn++)
                 {
-                    worksheet.Cells[1, i] = table.Columns[i - 1].ColumnName;
+                    worksheet.Cells[1, tableColumn] = table.Columns[tableColumn - 1].ColumnName;
                 }
 
-                for (int j = 0; j < table.Rows.Count; j++)
+                for (int tableRow = 0; tableRow < table.Rows.Count; tableRow++)
                 {
-                    for (int k = 0; k < table.Columns.Count; k++)
+                    for (int tableColumn = 0; tableColumn < table.Columns.Count; tableColumn++)
                     {
-                        worksheet.Cells[j + 2, k + 1] = table.Rows[j].ItemArray[k].ToString();
+                        worksheet.Cells[tableRow + 2, tableColumn + 1] = table.Rows[tableRow].ItemArray[tableColumn].ToString();
                     }
                 }
             }
@@ -62,53 +59,46 @@
             foreach (var vendor in vendors)
             {
                 string vendorName = vendor.Name;
-
                 var vendorExpenses = vendor.Expenses
                     .Where(e => e.Vendor.Name == vendorName);
 
-                decimal expensesSum = 0m;
-
-                foreach (var vendorExpense in vendorExpenses)
-                {
-                    expensesSum += vendorExpense.ExpenseSum;
-                }
-
-                //var vendorProducts = vendor.Products.ToList();
+                decimal expensesSum = vendorExpenses.Sum(vendorExpense => vendorExpense.ExpenseSum);
                 var vendorProducts = vendor.Products.ToList();
                 
                 decimal totalTaxes = 0m;
                 decimal incomesSum = 0;
-
                 double tax = 0;
 
-
-                foreach (var vendorProduct in vendorProducts)
-                {
-                    if (products.ContainsKey(vendorProduct.Name))
-                    {
-                        tax = products[vendorProduct.Name];
-                    }
-
-                    int productId = vendorProduct.Id;
-                    var productSales = vendorProduct.Sales.Where(s => s.ProductId == productId);
-
-                    foreach (var productSale in productSales)
-                    {
-                        decimal productIncome = productSale.SalePrice * productSale.Quantity;
-                        incomesSum += productIncome;
-                        totalTaxes += (productIncome) * ((decimal)tax / 100);   
-                    }
-
-                    //incomesSum += vendorProduct.Price;
-                    //totalTaxes += (vendorProduct.Price) * ((decimal)tax / 100);   
-
-                }
+                incomesSum = CalculateVendorReport(products, vendorProducts, tax, incomesSum, ref totalTaxes);
 
                 decimal financialResult = incomesSum - expensesSum - totalTaxes;
 
                 VendorSale sale = new VendorSale(vendorName, incomesSum, expensesSum, totalTaxes, financialResult);
                 sales.Add(sale);
             }
+        }
+
+        private static decimal CalculateVendorReport(Dictionary<string, int> products, List<Product> vendorProducts, double tax, decimal incomesSum,
+            ref decimal totalTaxes)
+        {
+            foreach (var vendorProduct in vendorProducts)
+            {
+                if (products.ContainsKey(vendorProduct.Name))
+                {
+                    tax = products[vendorProduct.Name];
+                }
+
+                int productId = vendorProduct.Id;
+                var productSales = vendorProduct.Sales.Where(s => s.ProductId == productId);
+
+                foreach (var productSale in productSales)
+                {
+                    decimal productIncome = productSale.SalePrice*productSale.Quantity;
+                    incomesSum += productIncome;
+                    totalTaxes += (productIncome)*((decimal) tax/100);
+                }
+            }
+            return incomesSum;
         }
 
         private static SQL.DataSet GetDataSet(List<VendorSale> sales)

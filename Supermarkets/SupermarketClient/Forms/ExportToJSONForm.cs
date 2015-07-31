@@ -26,6 +26,7 @@ namespace SupermarketClient
             DateTime endDate = this.datePickerEndDate.Value.Date;
             var productsSalesReports = MSSQLRepository.GetSalesByProduct(startDate, endDate);
             ExportToJSON.ExportSalesByProductReport(productsSalesReports);
+            this.Close();
         }
     }
 }

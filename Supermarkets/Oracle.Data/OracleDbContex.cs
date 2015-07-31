@@ -2,9 +2,7 @@
 {
     using System.Data.Entity;
     using Migrations;
-    //using Migrations;
     using Models;
-    using Supermarket.Models;
 
     public class OracleDbContex : DbContext
     {

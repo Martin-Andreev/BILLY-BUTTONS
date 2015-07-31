@@ -13,13 +13,11 @@
             var vendors = context.Vendors.ToList();
 
             return vendors;
-
         }
 
         public static void ReplicateMssqlData(MSSQLContext data)
         {
             MySQLContext context = new MySQLContext();
-            context.Configuration.ValidateOnSaveEnabled = false;
             var vendors = data.Vendors;
             var measures = data.Measures;
             var supermarkets = data.Supermarkets;
@@ -38,7 +36,6 @@
             ReplicateSales(sales, context);
 
             ReplicateExpenses(expenses, context);
-
         }
 
         private static void ReplicateExpenses(IQueryable<Expense> expenses, MySQLContext context)
@@ -101,7 +98,6 @@
                     context.SaveChanges();
                 }
             }
-
         }
 
         private static void ReplicateProduct(MySQLContext context, IQueryable<Product> products)
@@ -123,7 +119,6 @@
                     context.SaveChanges();
                 }
             }
-
         }
 
         private static void ReplicateMeasure(MySQLContext context, IQueryable<Measure> measures)
@@ -142,7 +137,6 @@
                     context.SaveChanges();
                 }
             }
-
         }
 
         private static void ReplicateVendor(MySQLContext context, IQueryable<Vendor> vendors)
@@ -161,7 +155,6 @@
                     context.SaveChanges();
                 }
             }
-
         }
     }
 }

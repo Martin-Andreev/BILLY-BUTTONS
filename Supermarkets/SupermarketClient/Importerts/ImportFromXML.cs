@@ -54,19 +54,18 @@
                         decimal expenseSum = decimal.Parse(expense.Value);
                         DateTime expenseDate = DateTime.Parse(expense.Attribute("month").Value);
 
-                        wantedVendor.Expenses.Add(new Expense()
+                        var newExpense = new Expense()
                         {
                             ExpenseDate = expenseDate,
                             ExpenseSum = expenseSum
-                        });
+                        };
 
+                        wantedVendor.Expenses.Add(newExpense);
                         context.SaveChanges();
-                        Console.WriteLine(wantedVendor.Id);
                         transaction.Complete();
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine(e.Message);
                         transaction.Dispose();
                     }
                 }

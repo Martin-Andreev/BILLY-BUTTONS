@@ -80,17 +80,31 @@
 
                     Measure measure = GetProductMeasure(context, product);
 
-                    context.Products.Add(new Product()
+                    var newProduct = new Product()
                     {
                         Name = product.Name,
                         Measure = measure,
                         Vendor = vendor,
                         Price = product.Price
-                    });
+                    };
 
+                    context.Products.Add(newProduct);
                     context.SaveChanges();
                 }
             }
+        }
+
+        public static IList<Product> GetAllData(MSSQLContext context)
+        {
+            var data = context.Products
+                .Include(p => p.Measure)
+                .Include(p => p.Sales)
+                .Include(p => p.Sales.Select(s => s.Supermarket))
+                .Include(p => p.Vendor)
+                .Include(p => p.Vendor.Expenses)
+                .ToList();
+
+            return data;
         }
 
         private static Measure GetProductMeasure(MSSQLContext context, ProductDTO product)
@@ -124,20 +138,5 @@
 
             return context.Vendors.First(v => v.Name == product.Vendor.Name);
         }
-
-        public static IList<Product> GetAllData(MSSQLContext context)
-        {
-            var data = context.Products
-                .Include(p => p.Measure)
-                .Include(p => p.Sales)
-                .Include(p => p.Sales.Select(s => s.Supermarket))
-                .Include(p => p.Vendor)
-                .Include(p => p.Vendor.Expenses)
-                .ToList();
-
-            return data;
-        }
-
-    
     }
 }

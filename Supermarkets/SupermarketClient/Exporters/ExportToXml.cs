@@ -10,7 +10,7 @@
     {
         public static void ExportSalesByVendorsReport(List<VendorSalesReport> salesReports)
         {
-            const string fileName = "../../Sales-by-Vendors-Report.xml";
+            const string fileName = "../../Exported-Files/Sales-by-Vendors-Report.xml";
             Encoding encoding = Encoding.GetEncoding("windows-1251");
 
             using (XmlTextWriter writer = new XmlTextWriter(fileName, encoding))

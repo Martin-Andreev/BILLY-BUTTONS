@@ -6,12 +6,11 @@
     using MongoDB.Driver;
     using MSSQL.Data.Utilities;
 
-
     public static class ExportToJSON
     {
         public static void ExportSalesByProductReport(IList<SalesReport> reports)
         {
-            const string path = @"..\..\Json-Reports\";
+            const string path = @"..\..\Exported-Files\Json-Reports\";
 
             var client = new MongoClient();
             var database = client.GetDatabase("Reports");
@@ -19,16 +18,15 @@
             var collection = database.GetCollection<BsonDocument>("SalesByProductReports");
 
             ClearDirectory(path);
-
             foreach (var report in reports)
             {
                 var currentReport = new BsonDocument
                 {
-                    { "product-id", report.ProductId},
-                    {"product-name", report.ProductName},
-                    {"vendor-name", report.VendorName},
-                    {"total-quantity-sold", report.TotalQuantitySold},
-                    {"total-incomes", report.TotalIncomes.ToString()}
+                    { "product-id", report.ProductId },
+                    { "product-name", report.ProductName },
+                    { "vendor-name", report.VendorName },
+                    { "total-quantity-sold", report.TotalQuantitySold },
+                    { "total-incomes", report.TotalIncomes.ToString() }
                 };
 
                 File.WriteAllText(path + report.ProductId + ".json", currentReport.ToJson());
@@ -42,6 +40,7 @@
             {
                 Directory.Delete(path, true);
             }
+
             Directory.CreateDirectory(path);
         }
     }

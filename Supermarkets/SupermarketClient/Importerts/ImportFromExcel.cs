@@ -35,7 +35,6 @@
                             int rowsCount = rows.Count;
 
                             string supermarketName = rows[1][1].ToString();
-
                             Supermarket supermarket = GetSupermarket(context, supermarketName);
 
                             AddSaleToDatabase(rowsCount, rows, context, supermarket, saleDate);
@@ -49,8 +48,8 @@
         {
             var buffer = new byte[16*1024 - 1];
             int read;
-            var kur = entry.Open();
-            while ((read = kur.Read(buffer, 0, buffer.Length)) > 0)
+            var stream = entry.Open();
+            while ((read = stream.Read(buffer, 0, buffer.Length)) > 0)
             {
                 ms.Write(buffer, 0, read);
             }
@@ -59,7 +58,6 @@
         private static Supermarket GetSupermarket(MSSQLContext context, string supermarketName)
         {
             var supermarket = context.Supermarkets.FirstOrDefault(s => s.Name == supermarketName);
-
             if (supermarket == null)
             {
                 supermarket = new Supermarket()
@@ -80,7 +78,9 @@
             Supermarket supermarket,
             DateTime saleDate)
         {
-            for (int i = 3; i < rowsCount - 1; i++)
+            const int startRow = 3;
+
+            for (int i = startRow; i < rowsCount - 1; i++)
             {
                 string productName = rows[i][1].ToString();
                 int quantity = int.Parse(rows[i][2].ToString());
@@ -88,15 +88,16 @@
 
                 Product product = context.Products.FirstOrDefault(p => p.Name == productName);
 
-                context.Sales.Add(new Sale()
+                var sale = new Sale()
                 {
                     Supermarket = supermarket,
                     Product = product,
                     SaleDate = saleDate,
                     SalePrice = price,
                     Quantity = quantity
-                });
+                };
 
+                context.Sales.Add(sale);
                 context.SaveChanges();
             }
         }

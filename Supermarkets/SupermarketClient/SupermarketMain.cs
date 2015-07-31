@@ -6,6 +6,8 @@ using System.Windows.Forms;
 
 namespace SupermarketClient
 {
+    using Forms;
+
     static class SupermarketMain
     {
         /// <summary>

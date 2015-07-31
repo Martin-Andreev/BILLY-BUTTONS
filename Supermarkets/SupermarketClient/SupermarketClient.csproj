@@ -133,17 +133,17 @@
     <Compile Include="Forms\ExportToXMLForm.Designer.cs">
       <DependentUpon>ExportToXMLForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form1.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form2.cs">
+    <Compile Include="Forms\ExportToPdfForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="Forms\ExportToPdfForm.Designer.cs">
+      <DependentUpon>ExportToPdfForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Importerts\ImportFromExcel.cs" />
     <Compile Include="Importerts\ImportFromXML.cs" />
@@ -168,11 +168,11 @@
     <EmbeddedResource Include="Forms\ExportToXMLForm.resx">
       <DependentUpon>ExportToXMLForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ExportToPdfForm.resx">
+      <DependentUpon>ExportToPdfForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ImportFromExcelForm.resx">
       <DependentUpon>ImportFromExcelForm.cs</DependentUpon>

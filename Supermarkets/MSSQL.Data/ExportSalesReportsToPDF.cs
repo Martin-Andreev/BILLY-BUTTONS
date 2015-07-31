@@ -19,7 +19,7 @@ namespace MSSQL.Data
             var document = new Document(PageSize.A4, 50, 50, 10, 10);
 
              //Create a new PdfWriter object, specifying the output stream
-            var output = File.Create(Directory.GetCurrentDirectory() + @"\PdfReport.pdf");
+            var output = File.Create(Directory.GetCurrentDirectory() + @"..\..\..\Exported-Files\PdfReport.pdf");
             var writer = PdfWriter.GetInstance(document, output);
 
              //Open the Document for writing
@@ -31,7 +31,7 @@ namespace MSSQL.Data
             salesInfoTable.SpacingBefore = 5;
             salesInfoTable.SpacingAfter = 5;
             salesInfoTable.DefaultCell.Border = 0;
-            salesInfoTable.SetWidths(new float[] { 3f, 1.5f, 2f, 3f, 1f });
+            salesInfoTable.SetWidths(new float[] {3f, 1.5f, 2f, 3f, 1f});
 
             //set fonts
             BaseFont bfTimes = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, false);

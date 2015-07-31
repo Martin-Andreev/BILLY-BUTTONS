@@ -1,6 +1,6 @@
 ﻿namespace SupermarketClient
 {
-    partial class Form2
+    partial class ExportToPdfForm
     {
         /// <summary>
         /// Required designer variable.
@@ -57,7 +57,7 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Form2
+            // ExportToPdfForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -65,8 +65,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
-            this.Name = "Form2";
-            this.Text = "Form2";
+            this.Name = "ExportToPdfForm";
+            this.Text = "ExportToPdfForm";
             this.ResumeLayout(false);
 
         }
