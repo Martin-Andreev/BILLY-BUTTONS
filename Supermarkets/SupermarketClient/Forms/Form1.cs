@@ -3,9 +3,11 @@
     using System;
     using System.Linq;
     using System.Windows.Forms;
+    using Exporters;
     using MSSQL.Data;
     using MySQLDB.Data;
     using Oracle.Data;
+    using SQLLite.Data;
 
     public partial class Form1 : Form
     {
@@ -66,7 +68,11 @@
 
         private void btnExportToExel_Click(object sender, EventArgs e)
         {
+            var products = SqLiteRepository.GetProductTaxesData();
+            var vendors = MySqlRepository.GetAllData();
+            ExportToExcel.ExportVendorsReports(products, vendors);
 
+            this.Close();
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -7,6 +7,15 @@
 
     public static class MySqlRepository
     {
+        public static IList<Vendor> GetAllData()
+        {
+            var context = new MySQLContext();
+            var vendors = context.Vendors.ToList();
+
+            return vendors;
+
+        }
+
         public static void ReplicateMssqlData(MSSQLContext data)
         {
             MySQLContext context = new MySQLContext();
@@ -56,11 +65,9 @@
         {
             foreach (var sale in sales)
             {
-                if (
-                    !context.Sales.Any(
-                        s =>
-                            s.Supermarket.Name == sale.Supermarket.Name && s.Product.Name == sale.Product.Name &&
-                            s.SaleDate == sale.SaleDate))
+                if (!context.Sales.Any(s =>
+                    s.Supermarket.Name == sale.Supermarket.Name && s.Product.Name == sale.Product.Name &&
+                    s.SaleDate == sale.SaleDate))
                 {
                     var newSale = new Sale()
                     {

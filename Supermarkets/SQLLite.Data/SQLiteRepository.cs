@@ -1,12 +1,14 @@
 ﻿namespace SQLLite.Data
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.SQLite;
 
-    public static class SqLiteContext
+    public static class SqLiteRepository
     {
-        public static void GetProductTaxesData()
+        public static Dictionary<string, int> GetProductTaxesData()
         {
+            Dictionary<string, int> products = new Dictionary<string, int>();
             const string query = "SELECT * FROM ProductTaxes;";
             const string dataSource = @"D:\SoftUni\Level #3\Database Apps\Teamwork SQLite DB\TaxInformation.sqlite";
             
@@ -20,8 +22,12 @@
                 dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
-                    Console.WriteLine(dataReader["ProductName"]);
-                    Console.WriteLine(dataReader["Tax"]);
+                    string productName = dataReader["ProductName"].ToString();
+                    int productTax = int.Parse(dataReader["Tax"].ToString());
+
+                    products.Add(productName, productTax);
+                    //Console.WriteLine(dataReader["ProductName"]);
+                    //Console.WriteLine(dataReader["Tax"]);
                 }
             }
             catch (Exception e)
@@ -37,6 +43,8 @@
 
                 connection.Close();
             }
+
+            return products;
         }
     }
 }

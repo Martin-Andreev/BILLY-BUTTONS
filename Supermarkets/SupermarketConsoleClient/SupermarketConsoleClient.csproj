@@ -136,9 +136,9 @@
       <Project>{be84669a-503d-4297-8e5d-6dab8e26695a}</Project>
       <Name>Oracle.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SQLLite.Data\SQLLite.Data.csproj">
+    <ProjectReference Include="..\SQLLite.Data\SQLite.Data.csproj">
       <Project>{afc144d5-b7e9-4689-ba9d-2764465d3953}</Project>
-      <Name>SQLLite.Data</Name>
+      <Name>SQLite.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Supermarket.Models\Supermarket.Models.csproj">
       <Project>{9af51ea9-db57-47c9-a084-6fef7bc48a8a}</Project>

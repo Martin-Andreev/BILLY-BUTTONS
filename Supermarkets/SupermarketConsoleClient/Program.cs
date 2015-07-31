@@ -16,7 +16,14 @@
     {
         public static void Main()
         {
-            
+            var products = SQLLite.Data.SqLiteRepository.GetProductTaxesData();
+
+            Console.WriteLine(products.Count);
+            return;
+            foreach (var product in products)
+            {
+                Console.WriteLine("{0} -> {1}", product.Key, product.Value);
+            }
         }
     }
 }
