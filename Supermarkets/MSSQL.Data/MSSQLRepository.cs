@@ -107,6 +107,23 @@
             return data;
         }
 
+        public static IList<AgregatedSalesReport> GetSalesBetweenDates(DateTime startDate, DateTime endDate)
+        {
+            var context = new MSSQLContext();
+          
+            var salesQuery = context.Sales.Where(n => n.SaleDate >= startDate && n.SaleDate < endDate)
+                     .Select(s => new AgregatedSalesReport()
+                         {
+                             ProductName = s.Product.Name,
+                             TotalQuantitySold = s.Quantity,
+                             UnitPrice = s.Product.Price,
+                             Supermaket = s.Supermarket.Name,
+                             TotalIncomes = s.Quantity * s.Product.Price
+                         }).ToList();
+
+            return salesQuery;
+        }
+
         private static Measure GetProductMeasure(MSSQLContext context, ProductDTO product)
         {
             if (!context.Measures.Any(v => v.Name == product.Measure.Name))

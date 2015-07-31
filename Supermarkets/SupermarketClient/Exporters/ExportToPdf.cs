@@ -1,31 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MSSQL.Data
+﻿namespace SupermarketClient.Exporters
 {
+    using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
     using iTextSharp.text;
     using iTextSharp.text.pdf;
+    using MSSQL.Data.Utilities;
 
-    public static class ExportSalesReportsToPDF
+    public static class ExportToPdf
     {
-        public static void ExportDataToPdf(DateTime startDate, DateTime endDate,MSSQLContext mssqlContext)
+        public static void ExportSalesToPdf(IList<AgregatedSalesReport> salesQuery)
         {
+            PdfPTable salesInfoTable;
+            var document = CreateDocument(out salesInfoTable);
+            AddSalesToDocument(salesQuery, salesInfoTable);
 
+            document.Add(salesInfoTable);
+            document.Close();
+        }
+
+        private static Document CreateDocument(out PdfPTable salesInfoTable)
+        {
             var document = new Document(PageSize.A4, 50, 50, 10, 10);
 
-             //Create a new PdfWriter object, specifying the output stream
             var output = File.Create(Directory.GetCurrentDirectory() + @"..\..\..\Exported-Files\PdfReport.pdf");
             var writer = PdfWriter.GetInstance(document, output);
 
-             //Open the Document for writing
             document.Open();
 
-            var salesInfoTable = new PdfPTable(5);
+            salesInfoTable = new PdfPTable(5);
             salesInfoTable.TotalWidth = 100f;
             salesInfoTable.HorizontalAlignment = 0;
             salesInfoTable.SpacingBefore = 5;
@@ -33,14 +37,13 @@ namespace MSSQL.Data
             salesInfoTable.DefaultCell.Border = 0;
             salesInfoTable.SetWidths(new float[] {3f, 1.5f, 2f, 3f, 1f});
 
-            //set fonts
             BaseFont bfTimes = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, false);
             Font normal = new Font(bfTimes, 10);
             Font bold = new Font(bfTimes, 11, Font.BOLD);
 
             PdfPCell cellHeader = new PdfPCell(new Phrase("Aggregated Sales Report"));
             cellHeader.Colspan = 5;
-            cellHeader.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
+            cellHeader.HorizontalAlignment = 1;
             cellHeader.BackgroundColor = new BaseColor(135, 196, 28);
             cellHeader.PaddingTop = 10f;
             cellHeader.PaddingBottom = 10f;
@@ -51,30 +54,19 @@ namespace MSSQL.Data
             salesInfoTable.AddCell(new Phrase("Unit Price", bold));
             salesInfoTable.AddCell(new Phrase("Location", bold));
             salesInfoTable.AddCell(new Phrase("Sum", bold));
+            return document;
+        }
 
-            var salesQuery = mssqlContext.Sales.Where(n=>n.SaleDate>=startDate && n.SaleDate<endDate)
-                     .Select(
-                         s => new
-                         {
-                             productName = s.Product.Name,
-                             totalQuantitySold = s.Quantity,
-                             unitPrice = s.Product.Price,
-                             location = s.Supermarket.Name,
-                             totalIncomes = s.Quantity * s.Product.Price
-                         }).ToList();
-
-
+        private static void AddSalesToDocument(IList<AgregatedSalesReport> salesQuery, PdfPTable salesInfoTable)
+        {
             foreach (var sale in salesQuery)
             {
-                salesInfoTable.AddCell(sale.productName);
-                salesInfoTable.AddCell(Convert.ToDecimal(sale.totalQuantitySold).ToString(CultureInfo.InvariantCulture));
-                salesInfoTable.AddCell(Convert.ToDecimal(sale.unitPrice).ToString(CultureInfo.InvariantCulture));
-                salesInfoTable.AddCell(sale.location);
-                salesInfoTable.AddCell(Convert.ToDecimal(sale.totalIncomes).ToString(CultureInfo.InvariantCulture));
+                salesInfoTable.AddCell(sale.ProductName);
+                salesInfoTable.AddCell(Convert.ToDecimal(sale.TotalQuantitySold).ToString(CultureInfo.InvariantCulture));
+                salesInfoTable.AddCell(Convert.ToDecimal(sale.UnitPrice).ToString(CultureInfo.InvariantCulture));
+                salesInfoTable.AddCell(sale.Supermaket);
+                salesInfoTable.AddCell(Convert.ToDecimal(sale.TotalIncomes).ToString(CultureInfo.InvariantCulture));
             }
-
-            document.Add(salesInfoTable);
-            document.Close();
         }
     }
 }

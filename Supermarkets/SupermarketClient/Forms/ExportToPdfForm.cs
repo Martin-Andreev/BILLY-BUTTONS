@@ -11,9 +11,9 @@ using System.Windows.Forms;
 namespace SupermarketClient
 {
     using System.Data.Entity;
+    using Exporters;
     using MSSQL.Data;
-    //using MSSQL.Data.Migrations;
-
+   
     public partial class ExportToPdfForm : Form
     {
         public ExportToPdfForm()
@@ -25,8 +25,8 @@ namespace SupermarketClient
         {
             var firstDate = this.dateTimePicker1.Value.Date;
             var secondDate = this.dateTimePicker2.Value.Date;
-            MSSQLContext context = new MSSQLContext();
-            ExportSalesReportsToPDF.ExportDataToPdf(firstDate,secondDate, context);
+            var sales = MSSQLRepository.GetSalesBetweenDates(firstDate, secondDate);
+            ExportToPdf.ExportSalesToPdf(sales);
             this.Close();
         }
     }
